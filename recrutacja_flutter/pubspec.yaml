@@ -1,0 +1,40 @@
+name: recrutacja_flutter
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.5
+  hive: ^2.2.3
+  hive_flutter: ^1.0.0
+  cupertino_icons: ^1.0.2
+  jwt_decoder: ^2.0.1
+  dart_jsonwebtoken: ^2.6.4
+  jwt_decode: ^0.3.1
+  image_picker: ^0.7.2+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+
+  fonts:
+  - family: Oswald
+    fonts:
+    - asset: fonts/Oswald-VariableFont_wght.ttf
+  - family: Roboto
+    fonts:
+    - asset: fonts/Roboto-Regular.ttf
