@@ -22,7 +22,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'MaxiEcu',
+                  'Recrutacja',
                   style: kRecrutacjaStyle,
                 ),
                 const Text(

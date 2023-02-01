@@ -21,7 +21,7 @@ class AppBarLogOut extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
               Text(
-                'MaxiEcu',
+                'Recrutacja',
                 style: kAppBarFirstTextStyle,
               ),
               Padding(
