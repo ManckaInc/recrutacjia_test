@@ -81,8 +81,12 @@ class _ImageScreenState extends State<ImageScreen> {
                       ),
                        GestureDetector(
                         onTap: ()  async{
+
                           _value = await getImage();
 
+                          setState(() {
+                            _value != null;
+                          });
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
