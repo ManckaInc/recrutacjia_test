@@ -235,3 +235,5 @@ width: 1.0,
 color: const Color(0xff2C3340),
 )
 );
+
+String kOptionalText ='In short, criteria of one of the market tendencies may motivate developers to work out The Crash of Interrelational Index (Alec Leslie in The Book of the Base Configuration).\n On the one hand it can be said that the major accomplishments, such as the systolic approach, the draft analysis and prior decisions and early design solutions, the outline design stage or the subsequent actions comprehensively the design aspects.';

@@ -24,17 +24,6 @@ class _ImageScreenState extends State<ImageScreen> {
 
   File? _value;
 
-  Future getImage() async {
-    ImagePicker picker  = ImagePicker();
-    final image = await picker.getImage(source: ImageSource.gallery);
-    if(image == null) return;
-    final img = File(image.path);
-    setState(() {
-      this._value = img;
-    });
-  }
-
-  String optionalText = 'In short, criteria of one of the market tendencies may motivate developers to work out The Crash of Interrelational Index (Alec Leslie in The Book of the Base Configuration).\n On the one hand it can be said that the major accomplishments, such as the systolic approach, the draft analysis and prior decisions and early design solutions, the outline design stage or the subsequent actions comprehensively the design aspects.';
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +53,7 @@ class _ImageScreenState extends State<ImageScreen> {
                     height: 20.0,
                   ),
                   Text(
-                    optionalText,
+                    kOptionalText,
                     textAlign: TextAlign.justify,
                     style:kOptionalTextStyle,
                   ),
@@ -72,15 +61,19 @@ class _ImageScreenState extends State<ImageScreen> {
                     height: 40.0,
                   ),
                   GestureDetector(
-                    onTap: (){
-                      getImage();
+                    onTap: ()  async{
+                      _value = await getImage();
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 30.0),
                       decoration: kBoxDecorationAddImageContainer,
                       child: Center(
-                          child: _value != null ? Container(child: Image.file(_value!,
-                          fit: BoxFit.cover,),) : AddImgOptions(),
+                          child: _value != null ? Container(
+                            child: Image.file(File(_value!.path),
+                          fit: BoxFit.cover,
+                            ),
+                          )
+                              : AddImgOptions(),
                           ),
                       ),
                     ),
