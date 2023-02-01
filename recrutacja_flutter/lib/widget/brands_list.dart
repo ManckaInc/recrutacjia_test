@@ -12,7 +12,6 @@ class BrandsList extends StatefulWidget {
 
 class _BrandsListState extends State<BrandsList> {
 
-  final style = kNEWTextStyleContainerOne;
 
   List<Brand> brands = [
     Brand(name: 'Alpha Romeo'),

@@ -1,7 +1,9 @@
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:hive/hive.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 
 void logIn(String login, String password) async {
 
@@ -47,10 +49,11 @@ void getDataCars() async {
   var box = await Hive.openBox('Keys');
 
   var token = await box.get('token');
-  var base64 = base64Encode(utf8.encode(token));
+  var decToken = Jwt.parseJwt(token);
+
 
   var response = await http.get(Uri.parse('http://rekrutacja.maxiecu.com.pl/brands'), headers: {
-    'x-access-token': base64,
+    'x-access-token': "$decToken",
     'lang': 'pl',
     'type': 'elm327',
   });
@@ -62,38 +65,3 @@ void getDataCars() async {
     print(response.statusCode);
   }
 }
-
-// Map<String, dynamic> parseJwt() {
-//   String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1heGllY3UiLCJpYXQiOjE2NzQ3NzQ1NTYsImV4cCI6MTY3NDg2MDk1Nn0.YUSq4F9xiKiqktTKDtZxq5m_hduslpBK-CYH95X7NRA';
-//   final parts = token.split('.');
-//   if (parts.length != 3) {
-//     throw Exception('invalid token');
-//   }
-//
-//   final payload = _decodeBase64(parts[1]);
-//   final payloadMap = json.decode(payload);
-//   if (payloadMap is! Map<String, dynamic>) {
-//     throw Exception('invalid payload');
-//   }
-//
-//   return payloadMap;
-// }
-//
-// String _decodeBase64(String str) {
-//   String output = str.replaceAll('-', '+').replaceAll('_', '/');
-//
-//   switch (output.length % 4) {
-//     case 0:
-//       break;
-//     case 2:
-//       output += '==';
-//       break;
-//     case 3:
-//       output += '=';
-//       break;
-//     default:
-//       throw Exception('Illegal base64url string!"');
-//   }
-//   print(output);
-//   return utf8.decode(base64Url.decode(output));
-// }

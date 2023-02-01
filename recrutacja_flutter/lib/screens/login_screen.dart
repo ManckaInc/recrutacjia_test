@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'MaxiEcu',
+                    'Recrutacja',
                     style: kRecrutacjaStyle,
                   ),
                   const Text(

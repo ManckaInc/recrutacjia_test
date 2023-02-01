@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-//Welcome_screen, Login_Screen style constant
+//Welcome_screen, Login_Screen style
 
 
 const kContainerDecoration = BoxDecoration(
@@ -84,9 +84,9 @@ const kInputDecorationTextFieldStyle = InputDecoration(
 
 const kCursorStyle = Colors.white;
 
-//End Welcome_screen, Login_Screen style constant
+//End Welcome_screen, Login_Screen style
 
-//Start brands list screen style constant
+//Start brands list screen style
 
 const kAppBarFirstTextStyle = TextStyle(
   color: Colors.white,
@@ -235,3 +235,12 @@ width: 1.0,
 color: const Color(0xff2C3340),
 )
 );
+
+const kTextBackButtonStyle = TextStyle(
+  color: Colors.white,
+  fontFamily: 'Roboto',
+  fontSize: 16.0,
+  fontWeight: FontWeight.w300,
+);
+
+String kOptionalText ='In short, criteria of one of the market tendencies may motivate developers to work out The Crash of Interrelational Index (Alec Leslie in The Book of the Base Configuration).\n On the one hand it can be said that the major accomplishments, such as the systolic approach, the draft analysis and prior decisions and early design solutions, the outline design stage or the subsequent actions comprehensively the design aspects.';
