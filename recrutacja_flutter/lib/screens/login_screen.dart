@@ -3,6 +3,7 @@ import 'package:recrutacja_flutter/screens/brand_screen.dart';
 import 'package:recrutacja_flutter/services/login_data.dart';
 
 import '../utilities/constant.dart';
+import '../widget/container_message_empty.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -13,6 +14,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  final _text = TextEditingController();
+  bool _validate = false;
 
   String? password;
   String? login;
@@ -39,15 +43,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 200,
                   ),
+                    _validate == true ? const ContainerValidData() : const SizedBox(),
                     Padding(
                      padding: const EdgeInsets.all(10.0),
                      child: SizedBox(
                       width: 337,
                       height: 49,
                       child: TextField(
+                        controller: _text,
                         cursorColor: kCursorStyle,
                         style: kTextStyleLoginLabel,
-                        decoration: kInputDecorationTextFieldStyle,
+                        decoration: _validate == false ? kInputDecorationTextFieldStyle : kInputDecorationTextFieldStyleValidate,
                         onChanged: (value){
                           login = value;
                         },
@@ -61,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: true,
                       cursorColor: kCursorStyle,
                       style: kTextStyleLoginLabel,
-                      decoration: kInputDecorationTextFieldStyle.copyWith(labelText: 'Hasło',),
+                      decoration: _validate == false ? kInputDecorationTextFieldStyle.copyWith(labelText: 'Hasło',) : kInputDecorationTextFieldStyleValidate.copyWith(labelText: 'Hasło',),
                       onChanged: (value){
                         password = value;
                       },
@@ -74,19 +80,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 48,
                       child: TextButton(
                         style: kTextButtonStyle,
-
                         onPressed: ()  {
-                          setState (() {
+                          setState(() {
+                            _text.text.isEmpty ? _validate = true : _validate = false;
                           });
-                          try{
-                            logIn('$login','$password');
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => BrandsScreen()));
+                          if(_validate == false){
+                            try{
+                              logIn('$login','$password');
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => BrandsScreen()));
+                            }
+                            catch(e){
+                                print(e);
+                            }
                           }
-                          catch(e){
-                              print(e);
-                          }
-                          setState (() {
-                          });
                          },
                         child: const Text(
                           'Zaloguj',

@@ -81,6 +81,37 @@ const kInputDecorationTextFieldStyle = InputDecoration(
     ),
   ),
 );
+const kInputDecorationTextFieldStyleValidate = InputDecoration(
+  filled: true,
+  fillColor: Color(0xff222731),
+  suffixText: 'wymagane',
+  suffixStyle: TextStyle(
+    color: Colors.red,
+    fontFamily: 'Roboto',
+    fontSize: 12.0,
+    fontWeight: FontWeight.w300,
+  ),
+  labelText: 'Login',
+  labelStyle: TextStyle(
+    color: Colors.red,
+    fontFamily: 'Roboto',
+    fontSize: 18.0,
+    fontWeight: FontWeight.w300,
+    letterSpacing: 2.0,
+  ),
+  floatingLabelStyle: TextStyle(
+    color: Colors.red,
+  ),
+  border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(6.0))
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      width: 1,
+      color: Colors.red,
+    ),
+  ),
+);
 
 const kCursorStyle = Colors.white;
 
