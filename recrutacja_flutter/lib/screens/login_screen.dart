@@ -16,7 +16,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   final _text = TextEditingController();
-  bool _validate = false;
+  bool _validateLogin = false;
+  bool _validatePass = false;
 
   String? password;
   String? login;
@@ -43,17 +44,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 200,
                   ),
-                    _validate == true ? const ContainerValidData() : const SizedBox(),
+                    _validateLogin == true ? const ContainerValidData() : const SizedBox(),
                     Padding(
                      padding: const EdgeInsets.all(10.0),
                      child: SizedBox(
                       width: 337,
                       height: 49,
                       child: TextField(
-                        controller: _text,
+                        controller: _textLogin,
                         cursorColor: kCursorStyle,
                         style: kTextStyleLoginLabel,
-                        decoration: _validate == false ? kInputDecorationTextFieldStyle : kInputDecorationTextFieldStyleValidate,
+                        decoration: _validateLogin == false ? kInputDecorationTextFieldStyle : kInputDecorationTextFieldStyleValidate,
                         onChanged: (value){
                           login = value;
                         },
@@ -64,10 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 337,
                     height: 49,
                     child: TextField(
+                      controller: _textPass,
                       obscureText: true,
                       cursorColor: kCursorStyle,
                       style: kTextStyleLoginLabel,
-                      decoration: _validate == false ? kInputDecorationTextFieldStyle.copyWith(labelText: 'Hasło',) : kInputDecorationTextFieldStyleValidate.copyWith(labelText: 'Hasło',),
+                      decoration: _validatePass == false ? kInputDecorationTextFieldStyle.copyWith(labelText: 'Hasło',) : kInputDecorationTextFieldStyleValidate.copyWith(labelText: 'Hasło',),
                       onChanged: (value){
                         password = value;
                       },
@@ -82,9 +84,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: kTextButtonStyle,
                         onPressed: ()  {
                           setState(() {
-                            _text.text.isEmpty ? _validate = true : _validate = false;
+                            _textLogin.text.isEmpty ? _validateLogin = true : _validateLogin = false;
+                            _textPass.text.isEmpty ? _validatePass = true : _validatePass = false;                            
                           });
-                          if(_validate == false){
+                          if(_validateLogin == false || _validatePass == false){
                             try{
                               logIn('$login','$password');
                               Navigator.push(context, MaterialPageRoute(builder: (context) => BrandsScreen()));
